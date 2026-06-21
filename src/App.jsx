@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { HashRouter, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header.jsx";
 import CartDrawer from "./components/CartDrawer.jsx";
@@ -95,7 +95,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header
         location={location}
         onLocationChange={setLocation}
@@ -155,7 +155,7 @@ function App() {
         changeQuantity={changeQuantity}
         removeItem={removeItem}
       />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
