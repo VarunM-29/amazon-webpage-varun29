@@ -47,17 +47,26 @@ export default function HomePage({
           <button type="button" onClick={() => setCategory("electronics")}>Shop electronics</button>
         </div>
 
-        <aside className="heroPreview" aria-label="Featured preview">
-          <div className="heroPhone">
-            <div className="heroScreen">
-              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Featured product preview" />
+        <aside className="heroDealCards" aria-label="Today's deals">
+          {[
+            { icon: "⚡", label: "Electronics", off: "Up to 60% off", color: "#7b2ff7", delay: "0s" },
+            { icon: "👗", label: "Fashion",     off: "Up to 45% off", color: "#f953c6", delay: "0.4s" },
+            { icon: "🏠", label: "Home & Living", off: "Up to 50% off", color: "#ff6a00", delay: "0.8s" },
+          ].map((deal) => (
+            <div
+              key={deal.label}
+              className="dealCard"
+              style={{ "--glow": deal.color, animationDelay: deal.delay }}
+              onClick={() => setCategory(deal.label.toLowerCase().split(" ")[0])}
+            >
+              <span className="dealIcon">{deal.icon}</span>
+              <div className="dealInfo">
+                <strong>{deal.label}</strong>
+                <span className="dealOff">{deal.off}</span>
+              </div>
+              <span className="dealArrow">→</span>
             </div>
-            <span className="heroPhoneLabel">Explore deals</span>
-          </div>
-          <div className="heroDetails">
-            <strong>Smarter shopping, more choice.</strong>
-            <p>Find top-rated products, curated collections, and personalised offers with instant search and filters.</p>
-          </div>
+          ))}
         </aside>
       </section>
 
